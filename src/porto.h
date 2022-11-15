@@ -53,8 +53,9 @@ void imprimeP(pilha stack);
 void criaNavio(navio *ship, fila queue);
 void imprimeNavio(navio ship);
 void atracar(navio *fleet, fila *queue, int qtd);
-void desembarcar(navio ship);
-void armazenar(travessa t);
+void criaTravessa(travessa *t);
+void desembarcar(navio *ship, travessa *t);
+void armazenar(travessa *t);
 void relatorio(fila stack, travessa t, tempo time);
 
 //Funções estruturais da fila

@@ -79,3 +79,11 @@ void atracar(navio *ship, fila *queue, int qtd){
         imprimeNavio(*ship);
     }
 }
+
+void criaTravessa(travessa *t){
+    Pilha(&t->t1);
+    Pilha(&t->t2);
+    Pilha(&t->t3);
+    Pilha(&t->t4);
+    Pilha(&t.t5);
+}

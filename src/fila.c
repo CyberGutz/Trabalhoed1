@@ -5,13 +5,15 @@
 void Fila(fila *queue){
     queue->primeiro = (af)malloc(sizeof(cf));
     queue->ultimo = queue->primeiro;
+    queue->qtd = 0;
 }
 
-void enfileira(fila *queue, navio x){
+void enfileira(fila *queue, navio *x){
     queue->ultimo->prox = (af)malloc(sizeof(cf));
     queue->ultimo = queue->ultimo->prox;
-    queue->ultimo->ship = x;
+    queue->ultimo->ship = *x;
     queue->ultimo->prox = NULL;
+    queue->qtd++;
 }
 
 int fvazia(fila queue){

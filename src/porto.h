@@ -42,7 +42,7 @@ typedef struct navio{
     pilha pc1, pc2, pc3, pc4;
 }navio;
 
-navio criaNavio(int qtd);
-void atracar(navio ships[3])
+navio criaNavio(navio ship);
+void atracar(navio *ships, int qtd);
 
 #endif

@@ -7,10 +7,10 @@ void Fila(fila *queue){
     queue->ultimo = queue->primeiro;
 }
 
-void enfileira(fila *queue, int x){
+void enfileira(fila *queue, navio x){
     queue->ultimo->prox = (af)malloc(sizeof(cf));
     queue->ultimo = queue->ultimo->prox;
-    queue->ultimo->dado = x;
+    queue->ultimo->ship = x;
     queue->ultimo->prox = NULL;
 }
 
@@ -18,7 +18,7 @@ int fvazia(fila queue){
     return (queue.primeiro == queue.ultimo);
 }
 
-void desenfileira(fila *queue, int *x){
+void desenfileira(fila *queue, navio *x){
     af q;
     if(fvazia(*queue)){
         printf("\nErro: fila vazia\n");
@@ -26,7 +26,7 @@ void desenfileira(fila *queue, int *x){
 
     q = queue->primeiro;
     queue->primeiro = queue->primeiro->prox;
-    *x = queue->primeiro->dado;
+    *x = queue->primeiro->ship;
     free(q);
 }
 
@@ -34,5 +34,5 @@ void imprimef(af pointer){
     if(pointer->prox != NULL)
         imprimef(pointer->prox);
     else
-        printf("%d\n",pointer->dado);
+        printf("%d\n",pointer->ship);
 }

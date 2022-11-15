@@ -1,23 +1,6 @@
 #ifndef PORTO_H
 #define PORTO_H
 
-//Estruturas da Fila
-typedef struct cf *af;
-typedef struct cf{
-    navio ship;
-    af prox;
-}cf;
-typedef struct fila{
-    af primeiro, ultimo;
-}fila;
-
-//Funções estruturais da fila
-void Fila(fila *queue);
-void enfileira(fila *queue, navio ship);
-void desenfileira(fila *queue, navio ship);
-void imprimeF(fila queue);
-
-
 //Estruturas da Pilha
 typedef struct cp *ap;
 typedef struct cp{
@@ -44,5 +27,22 @@ typedef struct navio{
 
 navio criaNavio(navio ship);
 void atracar(navio *ships, int qtd);
+
+
+//Estruturas da Fila
+typedef struct cf *af;
+typedef struct cf{
+    navio ship;
+    af prox;
+}cf;
+typedef struct fila{
+    af primeiro, ultimo;
+}fila;
+
+//Funções estruturais da fila
+void Fila(fila *queue);
+void enfileira(fila *queue, navio ship);
+void desenfileira(fila *queue, navio *ship);
+void imprimeF(fila queue);
 
 #endif

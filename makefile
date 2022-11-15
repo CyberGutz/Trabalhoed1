@@ -1,10 +1,10 @@
 all:
 	clear
-	gcc porto.h fila.h pilha.h porto.c fila.c pilha.c main.c -o sim
+	gcc ./src/porto.h ./src/porto.c ./src/fila.c ./src/pilha.c ./src/main.c -o ./obj/sim
 
 run:
 	clear 
-	gcc porto.h fila.h pilha.h porto.c fila.c pilha.c main.c -o sim
+	gcc ./src/porto.h ./src/porto.c ./src/fila.c ./src/pilha.c ./src/main.c -o ./obj/sim
 	./sim
 
 clean:
@@ -14,10 +14,10 @@ clean:
 cleanmake:
 	clear
 	rm sim
-	gcc porto.h fila.h pilha.h porto.c fila.c pilha.c main.c -o sim
+	gcc ./src/porto.h ./src/porto.c ./src/fila.c ./src/pilha.c ./src/main.c -o ./obj/sim
 
 cleanrun:
 	clear
 	rm sim
-	gcc porto.h fila.h pilha.h porto.c fila.c pilha.c main.c -o sim
+	gcc ./src/porto.h ./src/porto.c ./src/fila.c ./src/pilha.c ./src/main.c -o ./obj/sim
 	./sim

@@ -28,7 +28,7 @@ typedef struct travessa{
 
 //Estrutura do navio
 typedef struct navio{
-    int id, ut;
+    int id, ut, qtdc;
     pilha pc1, pc2, pc3, pc4;
 }navio;
 
@@ -47,14 +47,16 @@ typedef struct fila{
 void Pilha(pilha *stack);
 void empilha(pilha *stack, int x);
 void desempilha(pilha *stack, int *x);
-void imprimeP(pilha stack);
+void imprimeP(ap pointer);
+int pvazia(pilha stack);
 
 //Funções Gerais
 void criaNavio(navio *ship, fila queue);
 void imprimeNavio(navio ship);
-void atracar(navio *fleet, fila *queue, int qtd);
+void atracar(fila *queue);
 void criaTravessa(travessa *t);
-void desembarcar(navio *ship, travessa *t);
+void imprimeTravessa(travessa t);
+void desembarcar(fila *queue, travessa *t);
 void armazenar(travessa *t);
 void relatorio(fila stack, travessa t, tempo time);
 
@@ -62,6 +64,7 @@ void relatorio(fila stack, travessa t, tempo time);
 void Fila(fila *queue);
 void enfileira(fila *queue, navio *ship);
 void desenfileira(fila *queue, navio *ship);
-void imprimeF(fila queue);
+void imprimeF(af pointer);
+int fvazia(fila queue);
 
 #endif

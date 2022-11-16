@@ -36,9 +36,9 @@ void desempilha(pilha *stack, int *x){
     stack->tamanho--;
 }
 
-void imprime(ap pointer){
+void imprimeP(ap pointer){
     if(pointer->prox != NULL)
-        imprime(pointer->prox);
+        imprimeP(pointer->prox);
     else
         printf("%d",pointer->dado);
 }

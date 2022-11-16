@@ -32,9 +32,9 @@ void desenfileira(fila *queue, navio *x){
     free(q);
 }
 
-void imprimef(af pointer){
+void imprimeF(af pointer){
     if(pointer->prox != NULL)
-        imprimef(pointer->prox);
+        imprimeF(pointer->prox);
     else
-        printf("%d\n",pointer->ship);
+        imprimeNavio(pointer->ship);
 }

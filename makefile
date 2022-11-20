@@ -1,10 +1,10 @@
 all:
 	clear
-	gcc ./src/porto.h ./src/porto.c ./src/fila.c ./src/pilha.c ./src/main.c -o ./obj/sim
+	gcc ./src/main.c ./src/porto.h ./src/porto.c ./src/fila.c ./src/pilha.c -o ./obj/sim
 
 run:
 	clear 
-	gcc ./src/porto.h ./src/porto.c ./src/fila.c ./src/pilha.c ./src/main.c -o ./obj/sim
+	gcc ./src/main.c ./src/porto.h ./src/porto.c ./src/fila.c ./src/pilha.c -o ./obj/sim
 	./obj/sim
 
 clean:

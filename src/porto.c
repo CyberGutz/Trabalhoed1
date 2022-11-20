@@ -15,7 +15,7 @@ void criaNavio(navio *ship, fila queue){
     //Cria o id do navio (baseado na quantidade da fila de atracamento)
     ship->id = queue.qtd;
 
-    //Define o ut do navio em 0 (já que ele ainda não descarregou na travessa)
+    //Define o ut do navio em 0 (já que ele ainda não passou nenhum tempo na fila)
     ship->ut = 0;
 
     //Define a quantidade de containeres como 0
@@ -87,7 +87,7 @@ void atracar(fila *queue){
     int i, qtd;
     navio *ship;
 
-    qtd = rand()%(3 - 1) + 1;
+    qtd = rand()%(3 - 0) + 0;
 
     printf("\n\nChegaram %d navios na fila de atracamento\n\n",qtd);
     sleep(3);
@@ -130,233 +130,170 @@ void imprimeTravessa(travessa t){
 }
 
 void desembarcar(fila *queue, travessa *t){
-    int i;
-    int *x;
-    navio *aux;
-    desenfileira(queue, aux);
-    
-    i=0;
-    while(i!=aux->pc1.tamanho){
-        if(aux->pc1.topo != aux->pc1.fundo){
-            desempilha(&aux->pc1, x);
-            empilha(&t->t1, *x);
-            aux->ut++;
-            i++;
-         }
+    int i, verificador, desempilhou;
+    int *x; 
+    navio aux = queue->primeiro->ship;
 
-        if(aux->pc1.topo != aux->pc1.fundo){
-            desempilha(&aux->pc1, x);
-            empilha(&t->t2, *x);
-            aux->ut++;
-            i++;
+    verificador = 0;                                                        //variável que verifica em qual pilha da travessa o navio deve desempilhar.
+    desempilhou = 0;                                                        //variável que verifica qual pilha do navio deve ser desempilhada.
+
+    if(t->t1.tamanho != 5 && verificador != 1){                             //verifica se a pilha da travessa está cheia, se estiver, e nenhuma outra travessa foi usada, ela continua o procedimento.
+        verificador = 1;
+        if(aux.pc1.topo != aux.pc1.fundo && desempilhou != 1){              //verifica se a pilha não está vazia e se nenhuma outra pilha já foi desempilhada (o desmpilhou no primeiro if é mais pra questão de estética).
+            desempilha(&aux.pc1, x);
+            desempilhou = 1;
         }
-
-        if(aux->pc1.topo != aux->pc1.fundo){
-            desempilha(&aux->pc1, x);
-            empilha(&t->t3, *x);
-            aux->ut++;
-            i++;
+        if(aux.pc2.topo != aux.pc2.fundo && desempilhou != 1){
+            desempilha(&aux.pc2, x);
+            desempilhou = 1;
         }
-
-        if(aux->pc1.topo != aux->pc1.fundo){
-            desempilha(&aux->pc1, x);
-            empilha(&t->t4, *x);
-            aux->ut++;
-            i++;
+        if(aux.pc3.topo != aux.pc3.fundo && desempilhou != 1){
+            desempilha(&aux.pc3, x);
+            desempilhou = 1;
         }
-
-        if(aux->pc1.topo != aux->pc1.fundo){
-            desempilha(&aux->pc1, x);
-            empilha(&t->t5, *x);
-            aux->ut++;
-            i++;
+        if(aux.pc4.topo != aux.pc4.fundo && desempilhou != 1){
+            desempilha(&aux.pc4, x);
+            desempilhou = 1;
         }
-
-        else
-            break;
-    } 
-    
-    i=0;
-    while(i!=aux->pc2.tamanho){
-        if(aux->pc1.topo != aux->pc2.fundo){
-            desempilha(&aux->pc2, x);
-            empilha(&t->t1, *x);
-            aux->ut++;
-            i++;
-         }
-
-        if(aux->pc1.topo != aux->pc2.fundo){
-            desempilha(&aux->pc2, x);
-            empilha(&t->t2, *x);
-            aux->ut++;
-            i++;
-        }
-
-        if(aux->pc1.topo != aux->pc2.fundo){
-            desempilha(&aux->pc2, x);
-            empilha(&t->t3, *x);
-            aux->ut++;
-            i++;
-        }
-
-        if(aux->pc1.topo != aux->pc2.fundo){
-            desempilha(&aux->pc2, x);
-            empilha(&t->t4, *x);
-            aux->ut++;
-            i++;
-        }
-
-        if(aux->pc1.topo != aux->pc2.fundo){
-            desempilha(&aux->pc2, x);
-            empilha(&t->t5, *x);
-            aux->ut++;
-            i++;
-        }
-
-        else
-            break;
-    }
-    
-    i=0;
-    while(i!=aux->pc2.tamanho){
-        if(aux->pc1.topo != aux->pc3.fundo){
-            desempilha(&aux->pc3, x);
-            empilha(&t->t1, *x);
-            aux->ut++;
-            i++;
-         }
-
-        if(aux->pc1.topo != aux->pc3.fundo){
-            desempilha(&aux->pc3, x);
-            empilha(&t->t2, *x);
-            aux->ut++;
-            i++;
-        }
-
-        if(aux->pc1.topo != aux->pc3.fundo){
-            desempilha(&aux->pc3, x);
-            empilha(&t->t3, *x);
-            aux->ut++;
-            i++;
-        }
-
-        if(aux->pc1.topo != aux->pc3.fundo){
-            desempilha(&aux->pc3, x);
-            empilha(&t->t4, *x);
-            aux->ut++;
-            i++;
-        }
-
-        if(aux->pc1.topo != aux->pc3.fundo){
-            desempilha(&aux->pc3, x);
-            empilha(&t->t5, *x);
-            aux->ut++;
-            i++;
-        }
-
-        else
-            break;
-    }
-    
-    i=0;
-    while(i!=aux->pc4.tamanho){
-        if(aux->pc1.topo != aux->pc4.fundo){
-            desempilha(&aux->pc4, x);
-            empilha(&t->t1, *x);
-            aux->ut++;
-            i++;
-         }
-
-        if(aux->pc1.topo != aux->pc4.fundo){
-            desempilha(&aux->pc4, x);
-            empilha(&t->t2, *x);
-            aux->ut++;
-            i++;
-        }
-
-        if(aux->pc1.topo != aux->pc4.fundo){
-            desempilha(&aux->pc4, x);
-            empilha(&t->t3, *x);
-            aux->ut++;
-            i++;
-        }
-
-        if(aux->pc1.topo != aux->pc4.fundo){
-            desempilha(&aux->pc4, x);
-            empilha(&t->t4, *x);
-            aux->ut++;
-            i++;
-        }
-
-        if(aux->pc1.topo != aux->pc4.fundo){
-            desempilha(&aux->pc4, x);
-            empilha(&t->t5, *x);
-            aux->ut++;
-            i++;
-        }
-
-        else
-            break;
     }
 
-    imprimeNavio(*aux);
+    if(t->t2.tamanho != 5 && verificador != 1){
+        verificador = 1;
+        if(aux.pc1.topo != aux.pc1.fundo && desempilhou != 1){          
+            desempilha(&aux.pc1, x);
+            desempilhou = 1;
+        }
+        if(aux.pc2.topo != aux.pc2.fundo && desempilhou != 1){
+            desempilha(&aux.pc2, x);
+            desempilhou = 1;
+        }
+        if(aux.pc3.topo != aux.pc3.fundo && desempilhou != 1){
+            desempilha(&aux.pc3, x);
+            desempilhou = 1;
+        }
+        if(aux.pc4.topo != aux.pc4.fundo && desempilhou != 1){
+            desempilha(&aux.pc4, x);
+            desempilhou = 1;
+        }
+    }
+
+    if(t->t3.tamanho != 5 && verificador != 1){
+        verificador = 1;
+        if(aux.pc1.topo != aux.pc1.fundo && desempilhou != 1){          //verifica se a pilha não está vazia e se nenhuma outra pilha já foi desempilhada (o desmpilhou no primeiro if é mais pra questão de estética).
+            desempilha(&aux.pc1, x);
+            desempilhou = 1;
+        }
+        if(aux.pc2.topo != aux.pc2.fundo && desempilhou != 1){
+            desempilha(&aux.pc2, x);
+            desempilhou = 1;
+        }
+        if(aux.pc3.topo != aux.pc3.fundo && desempilhou != 1){
+            desempilha(&aux.pc3, x);
+            desempilhou = 1;
+        }
+        if(aux.pc4.topo != aux.pc4.fundo && desempilhou != 1){
+            desempilha(&aux.pc4, x);
+            desempilhou = 1;
+        }
+    }
+
+    if(t->t4.tamanho != 5 && verificador != 1){
+        verificador = 1;
+        if(aux.pc1.topo != aux.pc1.fundo && desempilhou != 1){          //verifica se a pilha não está vazia e se nenhuma outra pilha já foi desempilhada (o desmpilhou no primeiro if é mais pra questão de estética).
+            desempilha(&aux.pc1, x);
+            desempilhou = 1;
+        }
+        if(aux.pc2.topo != aux.pc2.fundo && desempilhou != 1){
+            desempilha(&aux.pc2, x);
+            desempilhou = 1;
+        }
+        if(aux.pc3.topo != aux.pc3.fundo && desempilhou != 1){
+            desempilha(&aux.pc3, x);
+            desempilhou = 1;
+        }
+        if(aux.pc4.topo != aux.pc4.fundo && desempilhou != 1){
+            desempilha(&aux.pc4, x);
+            desempilhou = 1;
+        }
+    }
+
+    if(t->t5.tamanho != 5 && verificador != 1){
+        verificador = 1;
+        if(aux.pc1.topo != aux.pc1.fundo && desempilhou != 1){          //verifica se a pilha não está vazia e se nenhuma outra pilha já foi desempilhada (o desmpilhou no primeiro if é mais pra questão de estética).
+            desempilha(&aux.pc1, x);
+            desempilhou = 1;
+        }
+        if(aux.pc2.topo != aux.pc2.fundo && desempilhou != 1){
+            desempilha(&aux.pc2, x);
+            desempilhou = 1;
+        }
+        if(aux.pc3.topo != aux.pc3.fundo && desempilhou != 1){
+            desempilha(&aux.pc3, x);
+            desempilhou = 1;
+        }
+        if(aux.pc4.topo != aux.pc4.fundo && desempilhou != 1){
+            desempilha(&aux.pc4, x);
+            desempilhou = 1;
+        }
+    }
+    imprimeNavio(aux);
+    queue->primeiro->ship = aux;
+    if(aux.pc1.topo == aux.pc1.fundo && aux.pc2.topo == aux.pc2.fundo && aux.pc3.topo == aux.pc3.fundo && aux.pc4.topo == aux.pc4.fundo)
+        desenfileira(queue, &aux);
     sleep(3);
 }
 
-void armazenar(travessa *t){
-    int i, x;
-
-    i = 0;
-    while(i!=t->t1.tamanho){
-        desempilha(&t->t1, &x);
-        printf("Uma grua levou o container %d da pilha 1 da travessa",x);
-        sleep(2);
-        i++;
-    }
-
-    i = 0;
-    while(i!=t->t2.tamanho){
-        desempilha(&t->t2, &x);
-        printf("Uma grua levou o container %d da pilha 2 da travessa",x);
-        sleep(2);
-        i++;
-    }
-
-    i = 0;
-    while(i!=t->t3.tamanho){
-        desempilha(&t->t3, &x);
-        printf("Uma grua levou o container %d da pilha 3 da travessa",x);
-        sleep(2);
-        i++;
-    }
-
-    i = 0;
-    while(i!=t->t4.tamanho){
-        desempilha(&t->t4, &x);
-        printf("Uma grua levou o container %d da pilha 4 da travessa",x);
-        sleep(2);
-        i++;
-    }
-
-    i = 0;
-    while(i!=t->t5.tamanho){
-        desempilha(&t->t5, &x);
-        printf("Uma grua levou o container %d da pilha 1 da travessa",x);
-        sleep(2);
-        i++;
-    }
+void armazenar(pilha *t){
+    Pilha(t);
+    printf("Um carro levou a pilha da travessa para a área de armazenamento\n\n");
 }
 
-void relatorio(fila queue, travessa t, tempo time){
+void passaTempo(af pointer){                                           //Função que incrementa o tempo passado na fila de cada navio
+    if(pointer->prox != NULL)
+        passaTempo(pointer->prox);
+    else
+        pointer->ship.ut++;
+}
+
+int calculaMt(af pointer){                                            //função que calcula a média de tempo;
+    int temponavios = 0;
+    if(pointer->prox != NULL)
+        calculaMt(pointer->prox);
+    else
+        return temponavios = temponavios + pointer->ship.ut;
+}
+
+void relatorio(fila fa1, fila fa2, fila fa3, fila fa4, travessa t1, travessa t2, travessa t3, travessa t4, int mt1, int mt2, int mt3, int mt4){
     printf("\n////////////////////////////////////\n");
     printf("\tRELATORIO\n\n");
-    printf("\n\tFILA DE BARCOS: \n\n");
-    imprimeF(queue.primeiro);
+    printf("\n\tFILA DE BARCOS 1: \n\n");
+    imprimeF(fa1.primeiro);
+    printf("O tempo médio de espera na fila 1 é de %d unidades de tempo.\n\n", mt1);
     sleep(5);
-    printf("\n\n\tTRAVESSA:\n\n");
-    imprimeTravessa(t);
+    printf("\n\tFILA DE BARCOS 2: \n\n");
+    imprimeF(fa2.primeiro);
+    printf("O tempo médio de espera na fila 2 é de %d unidades de tempo.\n\n", mt2);
     sleep(5);
-    printf("Até agora se passaram %d dias e foram gastas no total %d unidades de tempo para descarga dos containers\n\n", time.dia, time.ut);
+    printf("\n\tFILA DE BARCOS 3: \n\n");
+    imprimeF(fa3.primeiro);
+    printf("O tempo médio de espera na fila 3 é de %d unidades de tempo.\n\n", mt3);
+    sleep(5);
+    printf("\n\tFILA DE BARCOS 4: \n\n");
+    imprimeF(fa4.primeiro);
+    printf("O tempo médio de espera na fila 3 é de %d unidades de tempo.\n\n", mt4);
+    sleep(5);
+    printf("\n\n\tTRAVESSA 1:\n\n");
+    imprimeTravessa(t1);
+    sleep(5);
+    printf("\n\n\tTRAVESSA 2:\n\n");
+    imprimeTravessa(t1);
+    sleep(5);
+    printf("\n\n\tTRAVESSA 3:\n\n");
+    imprimeTravessa(t1);
+    sleep(5);
+    printf("\n\n\tTRAVESSA 4:\n\n");
+    imprimeTravessa(t1);
+    sleep(5);
     printf("////////////////////////////////////\n\n");
     sleep(10);
 }

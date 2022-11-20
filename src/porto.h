@@ -14,13 +14,6 @@ typedef struct pilha{
     ap fundo, topo;
 }pilha;
 
-
-//Estrutura de tempo
-typedef struct tempo{
-    int dia;
-    int ut;
-}tempo;
-
 //Estrutura da travessa
 typedef struct travessa{
     pilha t1, t2, t3, t4, t5;
@@ -57,8 +50,10 @@ void atracar(fila *queue);
 void criaTravessa(travessa *t);
 void imprimeTravessa(travessa t);
 void desembarcar(fila *queue, travessa *t);
-void armazenar(travessa *t);
-void relatorio(fila stack, travessa t, tempo time);
+void armazenar(pilha *t);
+void passaTempo(af pointer);
+void relatorio(fila fa1, fila fa2, fila fa3, fila fa4, travessa t1, travessa t2, travessa t3, travessa t4, int mt1, int mt2, int mt3, int mt4);
+int calculaMt(af pointer);
 
 //Funções estruturais da fila
 void Fila(fila *queue);

@@ -50,22 +50,19 @@ As imagens abaixo esclarecem melhor as estruturas:
 
 <br>
 
-## Outras Estruturas
-
-Além das estruturas encapsuladas nos processos e objetos principais, também temos outra estrutura separada, para manutenção e controle de tempo:
-
-<img src = ".\DOCS\Estrutura do Contador de Tempo.png">
-
-*Anexo3: Estrutura do contador de tempo*
-
-<br>
-
 ## Contadores de tempo
 
-Como pode ser observado na imagem acima, existem duas variáveis que controlam o tempo de execução da simulação:
+O trabalho é executado por meio de uma variável de contagem de tempo chamada **ut**. Essa variável é responsável por iterar o programa, bem como computar cálculos de desempenho.
+Exitem dois tipos de ut:
 
-- **dia:** Unidade de tempo que conta quantas iterações da simulação ocorreram até agora.
-- **UT:** Unidade de tempo que conta cada ação que é feita (atracar, descarregar, armazenar, enfileirar).
+- ut geral: Serve pra iterar o programa e mostrar quantas iterações já ocorreram.
+- ut do navio: Serve pra contar quanto tempo o navio fica na fila de espera.
+
+Além desses ut's, existe também o controle dos carros de transporte, que é traduzido em uma variável (carro1, carro2, etc). Essa variável pode ter 3 valores possíveis: 0, 1 ou 2.
+
+- 0: Significa que o carro está pronto para armazenar a pilha da travessa.
+- 1: Significa que o carro acabou de ficar ocupado e está indo armazenar uma pilha.
+- 2: Significa que na próxima iteração, o carro vai ficar livre.
 
 <br>
 
@@ -75,27 +72,27 @@ O usuário entra no programa e lhe é perguntado quantos dias do porto ele quer 
 
 ## Atracar
 
-No começo de cada dia, de 1 a 3 navios são enfileirados na fila de atracamento. O numero que é enfileirado é escolhido aleatoriamente.
+No começo de cada dia, de 0 a 3 navios são enfileirados em cada fila de atracamento. O numero que é enfileirado é escolhido aleatoriamente.
 
 Ao enfileirar um navio, ele é criado, recebe um id (baseado na quantidade de navios na pilha), suas pilhas de containers são empilhadas (número aleatório entre 4 e 16 containeres, mínimo de um por pilha) e por fim, o navio é colocado na fila.
 
 ## Desembarcar
 
-Após atracar todos os navios do dia, começa o processo de desembarque, no qual todos os navios na fila descarregam seus containeres na travessa. Esse é o processo:
+Após atracar todos os navios da iteração, começa o processo de desembarque, no qual um navio da fila desembarca um container em uma pilha da travessa de sua fila de atracamento. Esse é o processo:
 
-Um navio é desenfileirado, suas pilhas são desempilhadas, e seus containers são empilhados nas pilhas da travessa.
+O primeiro navio na fila verifica qual container deve ser desempilhado, desempilha esse container e coloca em uma das pilhas da sua travessa, sendo essa a primeira pilha disponível. Após esse processo, verifica-se se todas as pilhas do navio estão vazias, se estiverem, ele é desenfileirado.
 
 ## Armazenar
 
-Os containers nas pilhas da travessa são levadas por gruas e encaminhadas para armazenamento (abstração). Na prática, as pilhas da travessa apenas são desempilhadas.
+Os containers numa pilha da travessa são levados por gruas e encaminhadas para armazenamento (abstração) por um carro, se o carro da fila estiver disponível. Se estiver, ele demora 2 ut pra concluir o processo.
 
 ## Relatório
 
-No final do dia é feio um relatório, que mostra a fila de navios, as travessas e o tempo decorrido (dias e UT).
+No final da iteração é feio um relatório, que mostra as filas de navios, as travessas e o tempo médio de espera por fila.
 
 ## Reset
 
-Se a fila estiver vazia, ela é resetada, para evitar id's muito grandes dos navios.
+Se uma fila estiver vazia, ela é resetada, para evitar id's muito grandes dos navios.
 
 <br>
 

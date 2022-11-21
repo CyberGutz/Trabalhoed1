@@ -80,7 +80,7 @@ Ao enfileirar um navio, ele é criado, recebe um id (baseado na quantidade de na
 
 Após atracar todos os navios da iteração, começa o processo de desembarque, no qual um navio da fila desembarca um container em uma pilha da travessa de sua fila de atracamento. Esse é o processo:
 
-O primeiro navio na fila verifica qual container deve ser desempilhado, desempilha esse container e coloca em uma das pilhas da sua travessa, sendo essa a primeira pilha disponível. Após esse processo, verifica-se se todas as pilhas do navio estão vazias, se estiverem, ele é desenfileirado.
+O primeiro navio na fila verifica qual container deve ser desempilhado, desempilha esse container e coloca em uma das pilhas da travessa, sendo essa a primeira pilha disponível. Após esse processo, verifica-se se todas as pilhas do navio estão vazias, se estiverem, ele é desenfileirado.
 
 ## Armazenar
 

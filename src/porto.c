@@ -263,7 +263,7 @@ int calculaMt(af pointer){                                            //função
         return temponavios = temponavios + pointer->ship.ut;
 }
 
-void relatorio(fila fa1, fila fa2, fila fa3, fila fa4, travessa t1, travessa t2, travessa t3, travessa t4, int mt1, int mt2, int mt3, int mt4){
+void relatorio(fila fa1, fila fa2, fila fa3, fila fa4, travessa t1, int mt1, int mt2, int mt3, int mt4){
     printf("\n////////////////////////////////////\n");
     printf("\tRELATORIO\n\n");
     printf("\n\tFILA DE BARCOS 1: \n\n");
@@ -282,16 +282,7 @@ void relatorio(fila fa1, fila fa2, fila fa3, fila fa4, travessa t1, travessa t2,
     imprimeF(fa4.primeiro);
     printf("O tempo médio de espera na fila 3 é de %d unidades de tempo.\n\n", mt4);
     sleep(5);
-    printf("\n\n\tTRAVESSA 1:\n\n");
-    imprimeTravessa(t1);
-    sleep(5);
-    printf("\n\n\tTRAVESSA 2:\n\n");
-    imprimeTravessa(t1);
-    sleep(5);
-    printf("\n\n\tTRAVESSA 3:\n\n");
-    imprimeTravessa(t1);
-    sleep(5);
-    printf("\n\n\tTRAVESSA 4:\n\n");
+    printf("\n\n\tTRAVESSA:\n\n");
     imprimeTravessa(t1);
     sleep(5);
     printf("////////////////////////////////////\n\n");

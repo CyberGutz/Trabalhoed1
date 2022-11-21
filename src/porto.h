@@ -52,7 +52,7 @@ void imprimeTravessa(travessa t);
 void desembarcar(fila *queue, travessa *t);
 void armazenar(pilha *t);
 void passaTempo(af pointer);
-void relatorio(fila fa1, fila fa2, fila fa3, fila fa4, travessa t1, travessa t2, travessa t3, travessa t4, int mt1, int mt2, int mt3, int mt4);
+void relatorio(fila fa1, fila fa2, fila fa3, fila fa4, travessa t1, int mt1, int mt2, int mt3, int mt4);
 int calculaMt(af pointer);
 
 //Funções estruturais da fila
